@@ -8,11 +8,16 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import {RouterModule, Routes} from '@angular/router';
 import {UserService} from './shared-service/user.service';
 import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ReactivFormComponent } from './components/reactiv-form/reactiv-form.component';
+
 
 const appRoutes: Routes = [
   {path: '' , component: ListUserComponent},
-  {path: 'op' , component: UserFormComponent}
+  {path: 'op' , component: UserFormComponent},
+  {path:'contact', component: ContactFormComponent},
+  {path:'reactive-form', component: ReactivFormComponent}
 
 ];
 
@@ -20,13 +25,16 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ListUserComponent,
-    UserFormComponent
+    UserFormComponent,
+    ContactFormComponent,
+    ReactivFormComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
