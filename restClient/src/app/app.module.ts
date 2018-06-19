@@ -8,16 +8,17 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import {RouterModule, Routes} from '@angular/router';
 import {UserService} from './shared-service/user.service';
 import {HttpModule} from '@angular/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
-import { ReactivFormComponent } from './components/reactiv-form/reactiv-form.component';
-
+import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { SearchCustomersComponent } from './components/search-customers/search-customers.component';
+import {AppRoutingModule} from "./app-routing.module";
+import {FormsModule} from "@angular/forms";
+import {DataService} from "./data.service";
 
 const appRoutes: Routes = [
   {path: '' , component: ListUserComponent},
-  {path: 'op' , component: UserFormComponent},
-  {path:'contact', component: ContactFormComponent},
-  {path:'reactive-form', component: ReactivFormComponent}
+  {path: 'op' , component: UserFormComponent}
 
 ];
 
@@ -26,17 +27,19 @@ const appRoutes: Routes = [
     AppComponent,
     ListUserComponent,
     UserFormComponent,
-    ContactFormComponent,
-    ReactivFormComponent,
+    CustomerComponent,
+    CustomerDetailsComponent,
+    CreateCustomerComponent,
+    SearchCustomersComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService,
+  DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
